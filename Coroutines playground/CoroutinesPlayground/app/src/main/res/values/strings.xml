@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CoroutinesPlayground</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="job">Job</string>
+    <string name="start">Start</string>
+    <string name="sum1">Sum1</string>
+    <string name="sum2">Sum2</string>
+    <string name="sum3">Sum3</string>
+    <string name="deferred">Deferred</string>
+    <string name="toast_sum">Sum is equal to</string>
+</resources>
