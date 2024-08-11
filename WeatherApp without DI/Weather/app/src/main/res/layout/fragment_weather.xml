@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.WeatherActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="329dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@null"
+        app:layout_constraintBottom_toTopOf="@id/textLocation1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+
+    <TextView
+        android:id="@+id/textLocation1"
+        android:layout_width="331dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/location1"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textLocalTime"
+        android:layout_width="336dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/local_time"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textLocation1"
+        app:layout_constraintStart_toStartOf="@+id/textLocation1"
+        app:layout_constraintTop_toBottomOf="@+id/textLocation1" />
+
+    <TextView
+        android:id="@+id/textLastUpdate1"
+        android:layout_width="341dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/last_update"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textLocalTime"
+        app:layout_constraintStart_toStartOf="@+id/textLocalTime"
+        app:layout_constraintTop_toBottomOf="@+id/textLocalTime" />
+
+    <TextView
+        android:id="@+id/textTemperature1"
+        android:layout_width="337dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/temperature"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textLastUpdate1"
+        app:layout_constraintStart_toStartOf="@+id/textLastUpdate1"
+        app:layout_constraintTop_toBottomOf="@+id/textLastUpdate1" />
+
+    <TextView
+        android:id="@+id/textCloud"
+        android:layout_width="322dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/cloud"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textTemperature1"
+        app:layout_constraintStart_toStartOf="@+id/textTemperature1"
+        app:layout_constraintTop_toBottomOf="@+id/textTemperature1" />
+
+    <TextView
+        android:id="@+id/textHumidity"
+        android:layout_width="330dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/humidity"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textCloud"
+        app:layout_constraintStart_toStartOf="@+id/textCloud"
+        app:layout_constraintTop_toBottomOf="@+id/textCloud" />
+
+    <TextView
+        android:id="@+id/textWind"
+        android:layout_width="336dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/wind"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textHumidity"
+        app:layout_constraintStart_toStartOf="@+id/textHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/textHumidity" />
+
+    <TextView
+        android:id="@+id/textPressure"
+        android:layout_width="331dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/atmospheric_pressure"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/textWind"
+        app:layout_constraintStart_toStartOf="@+id/textWind"
+        app:layout_constraintTop_toBottomOf="@+id/textWind" />
+
+    <TextView
+        android:id="@+id/textDewPoint"
+        android:layout_width="324dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/dew_point"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textPressure"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textPressure"
+        app:layout_constraintVertical_bias="0.086" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

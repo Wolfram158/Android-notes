@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name" translatable="false">Weather</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="empty" translatable="false" />
+    <string name="location">Location</string>
+    <string name="add">Add</string>
+    <string name="location1">Location:</string>
+    <string name="last_update">Last update:</string>
+    <string name="temperature">Temperature:</string>
+    <string name="cloud">Cloud:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="wind">Wind:</string>
+    <string name="atmospheric_pressure">Atmospheric pressure:</string>
+    <string name="dew_point">Dew point:</string>
+    <string name="local_time">Local time:</string>
+    <string name="no_internet_or_query">Probably, Internet connection is absent or incorrect
+        query.</string>
+    <string name="add_success">Weather was added successfully.</string>
+    <string name="add_failure">Weather was not added.</string>
+</resources>
