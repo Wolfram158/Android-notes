@@ -1,4 +1,4 @@
-package android.learn.coroutinesplayground
+package android.learn.coroutinesPlayground
 
 import org.junit.Test
 

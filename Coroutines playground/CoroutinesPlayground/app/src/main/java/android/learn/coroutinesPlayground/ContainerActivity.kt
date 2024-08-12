@@ -1,10 +1,11 @@
-package android.learn.coroutinesplayground
+package android.learn.coroutinesPlayground
 
 import android.content.Context
 import android.content.Intent
-import android.learn.coroutinesplayground.databinding.ActivityContainerBinding
-import android.learn.coroutinesplayground.deferred.DeferredFragment
-import android.learn.coroutinesplayground.job.JobFragment
+import android.learn.coroutinesPlayground.deferred.DeferredFragment
+import android.learn.coroutinesPlayground.job.JobFragment
+import android.learn.coroutinesPlayground.databinding.ActivityContainerBinding
+import android.learn.coroutinesPlayground.withContext.WithContextFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -26,8 +27,9 @@ class ContainerActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val fragmentKey = intent.getStringExtra(EXTRA_PATH)
             when (fragmentKey) {
-                "job" -> launchFragment(JobFragment.newInstance())
-                "deferred" -> launchFragment(DeferredFragment.newInstance())
+                Fragments.JOB.name -> launchFragment(JobFragment.newInstance())
+                Fragments.DEFERRED.name -> launchFragment(DeferredFragment.newInstance())
+                Fragments.WITH_CONTEXT.name -> launchFragment(WithContextFragment.newInstance())
             }
         }
 

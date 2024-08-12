@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "android.learn.coroutinesplayground"
+    namespace = "android.learn.coroutinesPlayground"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "android.learn.coroutinesplayground"
+        applicationId = "android.learn.coroutinesPlayground"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

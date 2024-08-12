@@ -8,4 +8,12 @@
     <string name="sum3">Sum3</string>
     <string name="deferred">Deferred</string>
     <string name="toast_sum">Sum is equal to</string>
+    <string name="with_context">withContext</string>
+    <string name="name_parameter_p">p</string>
+    <string name="name_parameter_q">q</string>
+    <string name="calculate">Calculate</string>
+    <string name="error_invalid_number">Invalid number(s)</string>
+    <string name="error_null_or_empty_number">At least one of numbers is null or empty</string>
+    <string name="input_n">n</string>
+    <string name="error_n">n can not be negative</string>
 </resources>

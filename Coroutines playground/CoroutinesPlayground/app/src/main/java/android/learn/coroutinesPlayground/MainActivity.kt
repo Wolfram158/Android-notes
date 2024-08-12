@@ -1,6 +1,6 @@
-package android.learn.coroutinesplayground
+package android.learn.coroutinesPlayground
 
-import android.learn.coroutinesplayground.databinding.ActivityMainBinding
+import android.learn.coroutinesPlayground.databinding.ActivityMainBinding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,11 +14,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.job.setOnClickListener {
-            launchActivity("job")
+            launchActivity(Fragments.JOB.name)
         }
 
         binding.deferred.setOnClickListener {
-            launchActivity("deferred")
+            launchActivity(Fragments.DEFERRED.name)
+        }
+
+        binding.withContext.setOnClickListener {
+            launchActivity(Fragments.WITH_CONTEXT.name)
         }
     }
 
