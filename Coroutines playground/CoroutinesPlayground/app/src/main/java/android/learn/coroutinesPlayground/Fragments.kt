@@ -1,5 +1,5 @@
 package android.learn.coroutinesPlayground
 
 enum class Fragments {
-    JOB, DEFERRED, WITH_CONTEXT
+    JOB, DEFERRED, WITH_CONTEXT, EXAMPLE3
 }

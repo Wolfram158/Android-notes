@@ -16,4 +16,13 @@
     <string name="error_null_or_empty_number">At least one of numbers is null or empty</string>
     <string name="input_n">n</string>
     <string name="error_n">n can not be negative</string>
+    <string name="example_3_flow">example 3 (flow)</string>
+    <string name="add_string">Add string</string>
+    <string name="string">String</string>
+    <string name="count">Count</string>
+    <string name="get_count">Get count</string>
+    <string name="next_page">Next page</string>
+    <string name="input_string_to_get_count">String to get count</string>
+    <string name="delete_string">Delete string</string>
+    <string name="previous_page">Previous page</string>
 </resources>

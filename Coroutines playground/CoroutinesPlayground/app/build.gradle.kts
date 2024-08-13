@@ -44,6 +44,7 @@ android {
 
 dependencies {
     implementation(libs.lifecycle)
+    implementation(libs.lifecycle.runtime)
     implementation(libs.androidx.room)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)

@@ -39,7 +39,7 @@ class WithContextViewModel : ViewModel() {
 
     private suspend fun getDesired(numberP: BigInteger, numberQ: BigInteger, numberN: Int): String {
         return withContext(Dispatchers.Default) {
-            val y = numberP.multiply(numberP).minus(BigInteger.valueOf(4).multiply(numberQ))
+            val y = numberP.pow(2).minus(BigInteger.valueOf(4).multiply(numberQ))
             val ab1 = fastPower(BigInteger.ONE, numberP, y, numberN)
             val ab2 = fastPower(BigInteger.ONE.negate(), numberP, y, numberN)
             ab1.first.plus(ab2.first).divide(BigInteger.valueOf(2).pow(numberN)).toString()
@@ -54,7 +54,7 @@ class WithContextViewModel : ViewModel() {
         if (n % 2 == 0) {
             val ab = fastPower(s.abs(), x, y, n / 2)
             return Pair(
-                ab.first.multiply(ab.first) + ab.second.multiply(ab.second).multiply(y),
+                ab.first.pow(2) + ab.second.pow(2).multiply(y),
                 BigInteger.valueOf(2).multiply(s).multiply(ab.first).multiply(ab.second)
             )
         }

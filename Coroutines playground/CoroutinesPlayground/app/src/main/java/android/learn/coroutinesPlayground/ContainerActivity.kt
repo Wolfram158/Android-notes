@@ -5,6 +5,7 @@ import android.content.Intent
 import android.learn.coroutinesPlayground.deferred.DeferredFragment
 import android.learn.coroutinesPlayground.job.JobFragment
 import android.learn.coroutinesPlayground.databinding.ActivityContainerBinding
+import android.learn.coroutinesPlayground.flow.example3.presentation.Example3Start
 import android.learn.coroutinesPlayground.withContext.WithContextFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class ContainerActivity : AppCompatActivity() {
                 Fragments.JOB.name -> launchFragment(JobFragment.newInstance())
                 Fragments.DEFERRED.name -> launchFragment(DeferredFragment.newInstance())
                 Fragments.WITH_CONTEXT.name -> launchFragment(WithContextFragment.newInstance())
+                Fragments.EXAMPLE3.name -> launchFragment(Example3Start.newInstance())
             }
         }
 

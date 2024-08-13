@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         binding.withContext.setOnClickListener {
             launchActivity(Fragments.WITH_CONTEXT.name)
         }
+
+        binding.example3Flow.setOnClickListener {
+            launchActivity(Fragments.EXAMPLE3.name)
+        }
     }
 
     private fun launchActivity(path: String) {

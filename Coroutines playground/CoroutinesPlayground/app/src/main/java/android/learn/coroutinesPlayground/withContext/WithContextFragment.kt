@@ -31,6 +31,18 @@ class WithContextFragment : Fragment() {
 
         binding.progressBar.isVisible = false
 
+        observeViewModel()
+
+        binding.calculate.setOnClickListener {
+            viewModel.calculate(
+                binding.inputP.text.toString(),
+                binding.inputQ.text.toString(),
+                binding.inputN.text.toString()
+            )
+        }
+    }
+
+    private fun observeViewModel() {
         viewModel = ViewModelProvider(this)[WithContextViewModel::class.java]
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
@@ -44,14 +56,6 @@ class WithContextFragment : Fragment() {
                     binding.progressBar.isVisible = false
                 }
             }
-        }
-
-        binding.calculate.setOnClickListener {
-            viewModel.calculate(
-                binding.inputP.text.toString(),
-                binding.inputQ.text.toString(),
-                binding.inputN.text.toString()
-            )
         }
     }
 
