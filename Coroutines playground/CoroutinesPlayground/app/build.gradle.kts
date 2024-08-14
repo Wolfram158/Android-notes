@@ -43,6 +43,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.dagger)
+    implementation(libs.dagger.support)
+    ksp(libs.dagger.compiler)
+    ksp(libs.dagger.processor)
     implementation(libs.lifecycle)
     implementation(libs.lifecycle.runtime)
     implementation(libs.androidx.room)

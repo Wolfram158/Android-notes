@@ -25,4 +25,5 @@
     <string name="input_string_to_get_count">String to get count</string>
     <string name="delete_string">Delete string</string>
     <string name="previous_page">Previous page</string>
+    <string name="example_3_with_dependency_injection">example 3 with dependency injection</string>
 </resources>

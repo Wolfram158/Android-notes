@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/with_context"
         android:id="@+id/withContext"
-        app:layout_constraintBottom_toBottomOf="@id/example_3_flow"
+        app:layout_constraintBottom_toTopOf="@id/example_3_flow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/deferred" />
@@ -46,10 +46,20 @@
         android:layout_height="wrap_content"
         android:text="@string/example_3_flow"
         android:id="@+id/example_3_flow"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/example_3_flow_di"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/withContext" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/example_3_with_dependency_injection"
+        android:id="@+id/example_3_flow_di"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/example_3_flow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         binding.example3Flow.setOnClickListener {
             launchActivity(Fragments.EXAMPLE3.name)
         }
+
+        binding.example3FlowDi.setOnClickListener {
+            launchActivity(Fragments.EXAMPLE3_DI.name)
+        }
     }
 
     private fun launchActivity(path: String) {
