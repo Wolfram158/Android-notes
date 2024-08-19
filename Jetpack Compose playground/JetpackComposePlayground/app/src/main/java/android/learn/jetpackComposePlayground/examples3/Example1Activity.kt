@@ -12,14 +12,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import android.learn.jetpackComposePlayground.examples3.ui.theme.JetpackComposePlaygroundTheme
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class Example1Activity : ComponentActivity() {
+    private val viewModel by viewModels<Example1ViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             JetpackComposePlaygroundTheme {
-
+                Example1(viewModel = viewModel)
             }
         }
     }
