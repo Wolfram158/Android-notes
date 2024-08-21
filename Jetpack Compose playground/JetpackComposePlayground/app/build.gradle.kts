@@ -51,6 +51,7 @@ android {
 
 dependencies {
 //    implementation(libs.android.material)
+    implementation(libs.androidx.navigation)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

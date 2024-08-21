@@ -1,4 +1,4 @@
-package android.learn.jetpackComposePlayground.examples3
+package android.learn.jetpackComposePlayground.examples3.domain
 
 data class Numbers(
     val id: Int,

@@ -2,7 +2,7 @@ package android.learn.jetpackComposePlayground.examples2
 
 import android.learn.jetpackComposePlayground.R
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Call
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Info
@@ -20,7 +20,7 @@ sealed class BottomItem(
 
     data object Add: BottomItem(
         R.string.add,
-        Icons.Outlined.Call
+        Icons.Outlined.Add
     )
 
     data object Email: BottomItem(
