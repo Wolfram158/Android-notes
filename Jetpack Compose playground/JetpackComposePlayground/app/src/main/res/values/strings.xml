@@ -8,4 +8,7 @@
     <string name="title_activity_example2">Example2Activity</string>
     <string name="title_activity_example1">Example1Activity</string>
     <string name="items">Items</string>
+    <string name="cross_won">Cross won</string>
+    <string name="null_won">Null won</string>
+    <string name="draw">Draw</string>
 </resources>
