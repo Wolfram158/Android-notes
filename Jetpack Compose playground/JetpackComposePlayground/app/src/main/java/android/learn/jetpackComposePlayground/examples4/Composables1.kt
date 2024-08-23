@@ -190,9 +190,6 @@ fun onTapState(tableState: TableState, it: Offset, size: IntSize): TableState {
 }
 
 fun checkWinner(summary: List<List<CellState>>): GameState {
-    if (summary.flatten().count { it != CellState.EMPTY } == 9) {
-        return GameState.DRAW
-    }
     for (i in 0..2) {
         if (summary[i].all { it == CellState.NULL }) {
             return GameState.NULL
@@ -224,6 +221,9 @@ fun checkWinner(summary: List<List<CellState>>): GameState {
     result = check(column3)
     if (result != GameState.PLAY) {
         return result
+    }
+    if (summary.flatten().count { it != CellState.EMPTY } == 9) {
+        return GameState.DRAW
     }
     return result
 }
