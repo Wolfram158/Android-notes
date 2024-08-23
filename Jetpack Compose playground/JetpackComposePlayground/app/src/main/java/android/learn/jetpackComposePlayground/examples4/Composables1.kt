@@ -1,17 +1,21 @@
 package android.learn.jetpackComposePlayground.examples4
 
 import android.learn.jetpackComposePlayground.R
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Refresh
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,9 +31,12 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
@@ -37,106 +44,109 @@ fun Table() {
     var tableState by rememberSaveable(saver = TableState.saver) {
         mutableStateOf(TableState())
     }
-
-    Column(
-        verticalArrangement = Arrangement.SpaceBetween
+    Box(
+        Modifier
+            .background(Color.White)
+            .fillMaxSize()
+            .padding(
+                start = 96.dp,
+                top = 288.dp,
+                bottom = 288.dp,
+                end = 96.dp
+            )
     ) {
-        Box(
-            modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
-            contentAlignment = Alignment.Center
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             when (tableState.gameState) {
-                GameState.CROSS -> {
-                    Text(stringResource(R.string.cross_won))
-                }
+                GameState.CROSS -> CustomizedText(id = R.string.cross_won)
 
-                GameState.NULL -> {
-                    Text(stringResource(R.string.null_won))
-                }
+                GameState.NULL -> CustomizedText(id = R.string.null_won)
 
-                GameState.DRAW -> {
-                    Text(stringResource(R.string.draw))
-                }
+                GameState.DRAW -> CustomizedText(id = R.string.draw)
 
                 GameState.PLAY -> {
                     Text("")
                 }
             }
+
+            if (tableState.gameState != GameState.PLAY) {
+                Button(
+                    onClick = {
+                        tableState = TableState()
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Refresh,
+                        contentDescription = null,
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
-
-        Box(
-            Modifier
-                .background(Color.White)
-                .weight(1f)
-                .padding(
-                    start = 96.dp,
-                    top = 288.dp,
-                    bottom = 288.dp,
-                    end = 96.dp
-                )
-        ) {
-            Canvas(
-                modifier = Modifier
-                    .height(192.dp)
-                    .width(192.dp)
-                    .background(Color.Black)
-                    .pointerInput(key1 = Unit) {
-                        detectTapGestures {
-                            tableState = onTapState(tableState, it, size)
-                        }
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 56.dp)
+                .height(128.dp)
+                .width(128.dp)
+                .background(Color.Black)
+                .pointerInput(key1 = Unit) {
+                    detectTapGestures {
+                        tableState = onTapState(tableState, it, size)
                     }
-            ) {
-                val path = Path()
+                }
+        ) {
+            val path = Path()
 
-                path.lineTo(size.width, 0f)
-                path.lineTo(size.width, size.height)
-                path.lineTo(0f, size.height)
-                path.lineTo(0f, 0f)
-                path.moveTo(size.width / 3, 0f)
-                path.lineTo(size.width / 3, size.height)
-                path.moveTo(2 * size.width / 3, 0f)
-                path.lineTo(2 * size.width / 3, size.height)
-                path.moveTo(0f, size.height / 3)
-                path.lineTo(size.width, size.height / 3)
-                path.moveTo(0f, 2 * size.height / 3)
-                path.lineTo(size.width, 2 * size.height / 3)
+            path.lineTo(size.width, 0f)
+            path.lineTo(size.width, size.height)
+            path.lineTo(0f, size.height)
+            path.lineTo(0f, 0f)
+            path.moveTo(size.width / 3, 0f)
+            path.lineTo(size.width / 3, size.height)
+            path.moveTo(2 * size.width / 3, 0f)
+            path.lineTo(2 * size.width / 3, size.height)
+            path.moveTo(0f, size.height / 3)
+            path.lineTo(size.width, size.height / 3)
+            path.moveTo(0f, 2 * size.height / 3)
+            path.lineTo(size.width, 2 * size.height / 3)
 
+            drawPath(
+                path = path,
+                brush = Brush.linearGradient(listOf(Color.Red, Color.Blue)),
+                style = Stroke(width = 10.dp.toPx())
+            )
+
+            val path1 = Path()
+
+            for (corners in tableState.leftCorners) {
+                val x = corners.x
+                val y = corners.y
+                path1.moveTo(x, y)
+                path1.lineTo(x + size.width / 4, y + size.height / 4)
+                path1.moveTo(x + size.width / 4, y)
+                path1.lineTo(x, y + size.height / 4)
                 drawPath(
-                    path = path,
-                    brush = Brush.linearGradient(listOf(Color.Red, Color.Blue)),
-                    style = Stroke(width = 10.dp.toPx())
+                    path = path1,
+                    color = Color.Yellow,
+                    style = Stroke(width = 5.dp.toPx())
                 )
+            }
 
-                val path1 = Path()
-
-                for (corners in tableState.leftCorners) {
-                    val x = corners.x
-                    val y = corners.y
-                    path1.moveTo(x, y)
-                    path1.lineTo(x + size.width / 4, y + size.height / 4)
-                    path1.moveTo(x + size.width / 4, y)
-                    path1.lineTo(x, y + size.height / 4)
-                    drawPath(
-                        path = path1,
-                        color = Color.Yellow,
-                        style = Stroke(width = 5.dp.toPx())
-                    )
-                }
-
-                for (center in tableState.centers) {
-                    drawCircle(
-                        color = Color.Green,
-                        center = center,
-                        radius = 20.dp.toPx(),
-                        style = Stroke(width = 3.dp.toPx())
-                    )
-                }
-
+            for (center in tableState.centers) {
+                drawCircle(
+                    color = Color.Green,
+                    center = center,
+                    radius = 15.dp.toPx(),
+                    style = Stroke(width = 3.dp.toPx())
+                )
             }
 
         }
+
     }
 }
 
@@ -225,4 +235,15 @@ fun check(cells: List<CellState>): GameState {
         return GameState.CROSS
     }
     return GameState.PLAY
+}
+
+@Composable
+fun CustomizedText(id: Int) {
+    Text(
+        stringResource(id),
+        style = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
+        )
+    )
 }
