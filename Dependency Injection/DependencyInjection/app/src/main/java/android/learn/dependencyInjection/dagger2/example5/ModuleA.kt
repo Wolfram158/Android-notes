@@ -5,9 +5,9 @@ import dagger.Provides
 
 @Module
 class ModuleA {
-    @Provides
-    fun provideA(b: InterfaceB): A {
-        return A(b)
-    }
+//    @Provides
+//    fun provideA(b: InterfaceB): A {
+//        return A(b)
+//    }
 
 }

@@ -5,7 +5,7 @@ import dagger.Component
 
 @Component(modules = [ModuleA::class, ModuleB::class])
 interface Component {
-    fun injectA(a: A)
+    //fun injectA(a: A)
 
     fun injectExample5(activity: Example5)
 
