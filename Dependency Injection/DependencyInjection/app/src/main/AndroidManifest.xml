@@ -13,6 +13,9 @@
         android:theme="@style/Theme.DependencyInjection"
         tools:targetApi="31">
         <activity
+            android:name=".dagger2.example6.Example6"
+            android:exported="true" />
+        <activity
             android:name=".dagger2.example5.Example5"
             android:exported="true" />
         <activity
