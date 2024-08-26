@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location">Место</string>
+    <string name="add">Добавить</string>
+    <string name="location1">Место:</string>
+    <string name="last_update">Последнее обновление:</string>
+    <string name="temperature">Температура:</string>
+    <string name="cloud">Облачность:</string>
+    <string name="humidity">Влажность:</string>
+    <string name="wind">Скорость ветра:</string>
+    <string name="atmospheric_pressure">Атмосферное давление:</string>
+    <string name="dew_point">Точка росы:</string>
+    <string name="local_time">Местное время:</string>
+    <string name="no_internet_or_query">Вероятно, отсутствует Интернет-подключение или некорректный
+        запрос</string>
+    <string name="add_success">Погода была успешно добавлена.</string>
+    <string name="add_failure">Не удалось добавить погоду.</string>
+
+</resources>
