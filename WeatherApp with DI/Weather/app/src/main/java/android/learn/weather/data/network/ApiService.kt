@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("current.json?key=")
+    @GET("current.json")
     suspend fun getWeather(@Query(QUERY_PARAM) location: String): WeatherDto
 
     companion object {
