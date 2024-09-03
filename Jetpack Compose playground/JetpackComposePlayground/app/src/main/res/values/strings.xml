@@ -11,4 +11,5 @@
     <string name="cross_won">Cross won</string>
     <string name="null_won">Null won</string>
     <string name="draw">Draw</string>
+    <string name="calculate">Calculate</string>
 </resources>

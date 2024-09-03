@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-parcelize")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.parcelize)
 }
 
 android {
@@ -52,6 +53,18 @@ android {
 
 dependencies {
 //    implementation(libs.android.material)
+    implementation(libs.dagger)
+    implementation(libs.dagger.support)
+    ksp(libs.dagger.compiler)
+    ksp(libs.dagger.processor)
+
+    implementation(libs.mvi)
+    implementation(libs.mvi.coroutines)
+    implementation(libs.mvi.main)
+
+    implementation(libs.decompose)
+    implementation(libs.decompose.ext)
+
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.core.ktx)

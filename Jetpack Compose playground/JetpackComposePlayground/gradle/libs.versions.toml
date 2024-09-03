@@ -1,6 +1,7 @@
 [versions]
 agp = "8.5.0"
 kotlin = "1.9.0"
+ksp = "1.9.22-1.0.16"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -15,8 +16,21 @@ materialVersion = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
 navigation = "2.7.7"
+decomopse-ext = "3.1.0"
+decompose = "3.1.0"
+mvi = "4.2.0"
+dagger = "2.51"
 
 [libraries]
+dagger = { group = "com.google.dagger", name = "dagger-android", version.ref = "dagger"}
+dagger-support = { group = "com.google.dagger", name = "dagger-android-support", version.ref = "dagger"}
+dagger-processor = { group = "com.google.dagger", name = "dagger-android-processor", version.ref = "dagger"}
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
+mvi = { group = "com.arkivanov.mvikotlin", name = "mvikotlin", version.ref = "mvi" }
+mvi-coroutines = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-extensions-coroutines", version.ref = "mvi" }
+mvi-main = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-main", version.ref = "mvi" }
+decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-ext = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decomopse-ext" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -42,4 +56,6 @@ androidx-navigation = { group = "androidx.navigation", name = "navigation-compos
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
