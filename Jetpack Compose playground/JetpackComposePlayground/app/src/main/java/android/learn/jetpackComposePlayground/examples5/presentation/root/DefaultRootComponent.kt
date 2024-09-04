@@ -45,6 +45,7 @@ class DefaultRootComponent @AssistedInject constructor(
                 )
                 RootComponent.Child.Addition(component)
             }
+
             Config.List -> {
                 val component = listComponentFactory.create(
                     onGotoAddScreenClicked = {
@@ -62,7 +63,7 @@ class DefaultRootComponent @AssistedInject constructor(
         data object List : Config
 
         @Parcelize
-        data object Addition: Config
+        data object Addition : Config
     }
 
     @AssistedFactory

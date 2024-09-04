@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -18,10 +19,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun AdditionContent(component: AdditionComponent) {
@@ -32,9 +36,15 @@ fun AdditionContent(component: AdditionComponent) {
         modifier = Modifier.padding(120.dp)
     ) {
         Column(verticalArrangement = Arrangement.SpaceEvenly) {
-            InputField(state.quadruple.a, "a", component) { state.quadruple.copy(a = it) }
-            InputField(state.quadruple.b, "b", component) { state.quadruple.copy(b = it) }
-            InputField(state.quadruple.mod, "mod", component) { state.quadruple.copy(mod = it) }
+            InputField(state.quadruple.a, "a", component) {
+                state.quadruple.copy(a = it)
+            }
+            InputField(state.quadruple.b, "b", component) {
+                state.quadruple.copy(b = it)
+            }
+            InputField(state.quadruple.mod, "mod", component) {
+                state.quadruple.copy(mod = it)
+            }
             OutlinedTextField(
                 value = state.quadruple.result,
                 onValueChange = {},
@@ -46,6 +56,33 @@ fun AdditionContent(component: AdditionComponent) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(stringResource(R.string.calculate))
+            }
+            when (state.resultState) {
+                is AdditionStore.State.ResultState.Calculated -> {
+
+                }
+                AdditionStore.State.ResultState.Calculating -> {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        color = Color.Black,
+                        strokeWidth = 8.dp
+                    )
+                }
+                AdditionStore.State.ResultState.Error -> {
+                    Text(
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        text = stringResource(R.string.error_occurred),
+                        style = LocalTextStyle.current.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
+                    )
+                }
+                AdditionStore.State.ResultState.Initial -> {
+
+                }
             }
             Spacer(modifier = Modifier.weight(1f))
         }

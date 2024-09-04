@@ -12,4 +12,5 @@
     <string name="null_won">Null won</string>
     <string name="draw">Draw</string>
     <string name="calculate">Calculate</string>
+    <string name="error_occurred">Error occurred</string>
 </resources>

@@ -12,6 +12,7 @@ fun RootContent(component: RootComponent) {
             is RootComponent.Child.Addition -> {
                 AdditionContent(component = instance.component)
             }
+
             is RootComponent.Child.List -> {
                 ListContent(component = instance.component)
             }

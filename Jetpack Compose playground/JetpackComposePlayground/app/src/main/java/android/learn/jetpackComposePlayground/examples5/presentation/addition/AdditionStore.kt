@@ -6,13 +6,13 @@ import android.learn.jetpackComposePlayground.examples5.domain.usecase.Calculate
 import android.learn.jetpackComposePlayground.examples5.presentation.addition.AdditionStore.Intent
 import android.learn.jetpackComposePlayground.examples5.presentation.addition.AdditionStore.State
 import android.learn.jetpackComposePlayground.examples5.presentation.addition.AdditionStore.Label
-import android.learn.jetpackComposePlayground.examples5.presentation.list.ListStore
 import android.util.Log
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -85,19 +85,22 @@ class AdditionStoreFactory @Inject constructor(
         private val quadruple: Quadruple
     ) : CoroutineBootstrapper<Action>() {
         override fun invoke() {
-            scope.launch {
-                dispatch(Action.Calculating)
-                try {
-                    val result = calculateUseCase(quadruple)
-                    dispatch(Action.ResultCalculated(result))
-                } catch (e: Exception) {
-                    dispatch(Action.Error)
-                }
-            }
+//            scope.launch {
+//                dispatch(Action.Calculating)
+//                try {
+//                    val result = calculateUseCase(quadruple)
+//                    dispatch(Action.ResultCalculated(result))
+//                } catch (e: Exception) {
+//                    Log.d("MVIKotlin", "Error occurred")
+//                    dispatch(Action.Error)
+//                }
+//            }
         }
     }
 
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Msg, Label>() {
+        private var job: Job? = null
+
         override fun executeIntent(intent: Intent) {
             when (intent) {
                 Intent.ClickAddAndExit -> {
@@ -113,13 +116,15 @@ class AdditionStoreFactory @Inject constructor(
 
                 Intent.ClickCalculate -> {
                     Log.d("MVIKotlin", state().quadruple.toString())
-                    scope.launch {
+//                    job?.cancel()
+                    job = scope.launch {
                         dispatch(Msg.Calculating)
                         try {
                             Log.d("MVIKotlin", "Before calculating")
                             val quadruple = calculateUseCase(state().quadruple)
                             dispatch(Msg.ResultCalculated(quadruple))
                         } catch (e: Exception) {
+                            Log.d("MVIKotlin", e.toString())
                             dispatch(Msg.Error)
                         }
                     }
