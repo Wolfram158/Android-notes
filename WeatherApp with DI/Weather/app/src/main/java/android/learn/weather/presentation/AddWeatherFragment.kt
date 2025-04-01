@@ -63,7 +63,7 @@ class AddWeatherFragment : Fragment() {
                 weatherDto = viewModel.findWeather(binding.editLocation.text.toString())
                 binding.textNameOfLocation.text = weatherDto.locationDetailsDto.name
                 binding.editLocation.setText(resources.getText(R.string.empty))
-            } catch (_: Exception) {
+            } catch (e: Exception) {
                 Toast.makeText(
                     context,
                     resources.getString(R.string.no_internet_or_query),

@@ -3,11 +3,13 @@ package android.learn.weather.presentation
 import android.content.Context
 import android.learn.weather.R
 import android.learn.weather.databinding.FragmentWeatherBinding
+import android.learn.weather.domain.Weather
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
@@ -30,27 +32,8 @@ class WeatherFragment : Fragment() {
         (requireActivity().application as App).component
     }
 
-    override fun onAttach(context: Context) {
-        component.inject(this)
-
-        super.onAttach(context)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentWeatherBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        _code = requireArguments().getInt(PARAM_CODE)
-
-        viewModel = ViewModelProvider(this, viewModelFactory)[WeatherViewModel::class.java]
-        viewModel.getWeather(code).observe(viewLifecycleOwner) {
+    private val observer by lazy {
+        Observer<Weather> {
             if (binding.imageView != null) {
                 Picasso.get()
                     .load("https:${it.imageUrl}")
@@ -81,7 +64,8 @@ class WeatherFragment : Fragment() {
                 resources.getString(R.string.last_update),
                 it.lastUpdated
             )
-            binding.textLocation1.text = String.format("%s, %s, %s",
+            binding.textLocation1.text = String.format(
+                "%s, %s, %s",
                 it.name,
                 it.region,
                 it.country
@@ -97,14 +81,47 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    private val liveData by lazy {
+        viewModel.getWeather(code)
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+
+        super.onAttach(context)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentWeatherBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        _code = requireArguments().getInt(PARAM_CODE)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)[WeatherViewModel::class.java]
+        liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    fun removeObserver() {
+        liveData.removeObserver(observer)
+    }
+
     private fun format(left: String, right: String?): String {
-        return String.format("%s %s",
+        return String.format(
+            "%s %s",
             left,
             right
         )
     }
 
     companion object {
+        const val TAG = "WeatherFragment"
         private const val PARAM_CODE = "code"
 
         fun newInstance(code: Int) =

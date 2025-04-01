@@ -1,17 +1,15 @@
 package android.learn.weather.presentation
 
 import android.learn.weather.R
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.learn.weather.databinding.ActivityWeatherListBinding
 import android.learn.weather.domain.Weather
 import android.learn.weather.presentation.adapters.WeatherListAdapter
-import android.util.Log
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -63,7 +61,11 @@ class WeatherListActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack()
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, WeatherFragment.newInstance(code))
+            .replace(
+                R.id.fragment_container,
+                WeatherFragment.newInstance(code),
+                WeatherFragment.TAG
+            )
             .addToBackStack(null)
             .commit()
     }
@@ -93,8 +95,9 @@ class WeatherListActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     val item = adapter.currentList[viewHolder.bindingAdapterPosition]
                     if (isLand()) {
+                        val fragment = supportFragmentManager.findFragmentByTag(WeatherFragment.TAG)
+                        (fragment as? WeatherFragment)?.removeObserver()
                         supportFragmentManager.popBackStack()
-                        delay(500)
                     }
                     viewModel.deleteWeather(item.code)
                 }

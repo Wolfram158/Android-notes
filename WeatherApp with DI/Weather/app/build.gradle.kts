@@ -23,7 +23,8 @@ android {
         val properties = Properties()
         properties.load(keystoreFile.inputStream())
 
-        val apiKey = properties.getProperty("API_KEY") ?: ""
+        val apiKey = properties.getProperty("API_KEY") ?: error("Api key must be located in " +
+                "file apikeys.properties")
 
         buildConfigField(
             type = "String",
