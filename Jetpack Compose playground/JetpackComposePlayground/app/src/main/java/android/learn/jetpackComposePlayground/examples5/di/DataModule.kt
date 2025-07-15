@@ -6,7 +6,10 @@ import android.learn.jetpackComposePlayground.examples5.domain.repository.Additi
 import android.learn.jetpackComposePlayground.examples5.domain.repository.ListRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
+@InstallIn(SingletonComponent::class)
 @Module
 interface DataModule {
     @Binds

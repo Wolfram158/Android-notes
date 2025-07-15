@@ -133,17 +133,17 @@ fun ListScreen(viewModel: Example1ViewModel, paddingValues: PaddingValues) {
                 viewModel.removeItem(it)
             }
 
-            SwipeToDismissBox(
-                modifier = Modifier
-                    .animateItemPlacement(
-                        spring(stiffness = Spring.StiffnessVeryLow)
-                    ),
-                state = dismissState,
-                backgroundContent = {},
-                enableDismissFromStartToEnd = false
-            ) {
-                ListItem(x = it.x, y = it.y, z = it.z, s = it.sum)
-            }
+//            SwipeToDismissBox(
+//                modifier = Modifier
+//                    .animateItemPlacement(
+//                        spring(stiffness = Spring.StiffnessVeryLow)
+//                    ),
+//                state = dismissState,
+//                backgroundContent = {},
+//                enableDismissFromStartToEnd = false
+//            ) {
+//                ListItem(x = it.x, y = it.y, z = it.z, s = it.sum)
+//            }
         }
 
     }

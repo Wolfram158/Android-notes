@@ -1,13 +1,17 @@
+import com.android.build.gradle.internal.packaging.defaultExcludes
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.parcelize)
+    alias(libs.plugins.compose.compiler)
+    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "android.learn.jetpackComposePlayground"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "android.learn.jetpackComposePlayground"
@@ -52,11 +56,14 @@ android {
 }
 
 dependencies {
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
 //    implementation(libs.android.material)
-    implementation(libs.dagger)
-    implementation(libs.dagger.support)
-    ksp(libs.dagger.compiler)
-    ksp(libs.dagger.processor)
+//    implementation(libs.dagger)
+//    implementation(libs.dagger.support)
+//    ksp(libs.dagger.compiler)
+//    ksp(libs.dagger.processor)
 
     implementation(libs.mvi)
     implementation(libs.mvi.coroutines)

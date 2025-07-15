@@ -1,17 +1,20 @@
 package android.learn.jetpackComposePlayground
 
-import android.learn.jetpackComposePlayground.examples4.Table
+import android.learn.jetpackComposePlayground.examples6.presentation.DownloadScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Table()
+            // Table()
+            DownloadScreen()
         }
     }
 }
